@@ -27,7 +27,7 @@ public class AddItemController {
 
     @GetMapping
     public String addItem(){
-        return "addPage";
+        return "addItemPage";
     }
 
     @ModelAttribute
@@ -47,7 +47,7 @@ public class AddItemController {
     @PostMapping
     public String processItemAddition (@Valid Item item, BindingResult result){
         if (result.hasErrors()){
-            return "addItem";
+            return "addItemPage";
         }
         log.info("Procedssing item: {}", item);
         itemRepository.save(item);

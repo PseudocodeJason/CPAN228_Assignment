@@ -16,9 +16,9 @@ public class Item {
     @NotBlank
     private String name;
     private Brand brandForm;
-    @Min(0)
+    @Min(2021)
     private int yearOfCreation;
-    @DecimalMin(value = "0", inclusive = true)
+    @DecimalMin(value = "1000", inclusive = true)
     private Double price;
 
 
