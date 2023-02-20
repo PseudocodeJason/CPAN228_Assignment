@@ -15,7 +15,32 @@
       class="d-flex flex-column bd-highlight justify-content-center align-items-center"
     >
       <h1>Welcome To Jason Mart</h1>
-     <nav><a href="http://http://localhost:8080/Additem">Add Item</a></nav>
+     <nav><a href="http://localhost:8080/Additem">Add Item</a></nav>
+
+     <div class="d-flex flex-row mb-3">
+      <div
+        class="card ms-3 me-3"
+        th:each="item: ${items}"
+        style="width: 18rem"
+      >
+        <div class="card-body">
+          <h5 class="card-title" th:text="${item.name}" />
+          <h6
+            class="card-subtitle mb-2 text-muted"
+            th:text="|Brand: ${item.brandForm}|"
+          />
+          <h6
+            class="card-subtitle mb-2 text-muted"
+            th:text="|Year of Creation: ${item.yearOfCreation}|"
+          />
+          <h6
+            class="card-subtitle mb-2 text-muted"
+            th:text="|Price: ${item.price}|"
+          />
+        
+        </div>
+      </div>
+    </div>
     </div>
   </body>
 </html>
