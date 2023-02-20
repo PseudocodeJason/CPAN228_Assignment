@@ -1,9 +1,9 @@
 package JasonTieu.Assignment01.model;
 
-import java.util.Arrays;
-
 import org.springframework.data.annotation.Id;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
@@ -16,21 +16,13 @@ public class Item {
     @NotBlank
     private String name;
     private Brand brandForm;
-    @NotBlank
+    @Min(0)
     private int yearOfCreation;
+    @DecimalMin(value = "0", inclusive = true)
     private Double price;
 
 
     public Item(Long id, String name, Brand brandForm, int yearOfCreation, Double price) {
-        if (price > 1000 || yearOfCreation > 2021 ){
-
-            if (!Arrays.asList(Brand.values()).contains(brandForm)){
-
-                throw new IllegalArgumentException("Brand Must On the List Since it is over 1000 Dollars or newer than 2021");
-
-            }
-            
-        }
         this.id = id;
         this.name = name;
         this.brandForm = brandForm;
@@ -58,4 +50,13 @@ public class Item {
         }
     }
 
+    // if (price > 1000 || yearOfCreation > 2021 ){
+
+    //     if (!Arrays.asList(Brand.values()).contains(brandForm)){
+    
+    //         throw new IllegalArgumentException("Brand Must On the List Since it is over 1000 Dollars or newer than 2021");
+    
+    //     }
+        
+    // }
 }

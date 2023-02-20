@@ -20,14 +20,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("Additem")
+@RequestMapping("/Additem")
 public class AddItemController {
     @Autowired
     private JdbcItemRepository itemRepository;
 
     @GetMapping
-    public String addKItem(){
-        return "addItem";
+    public String addItem(){
+        return "addPage";
     }
 
     @ModelAttribute
@@ -50,7 +50,7 @@ public class AddItemController {
             return "addItem";
         }
         log.info("Procedssing item: {}", item);
-        itemRepository.save(item());
-        return "redirect:/Itemlist";
+        itemRepository.save(item);
+        return "redirect:/";
     }
 }
