@@ -1,17 +1,26 @@
 package JasonTieu.Assignment01.model;
 
-import org.springframework.data.annotation.Id;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Item {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     private String name;
@@ -20,15 +29,6 @@ public class Item {
     private int yearOfCreation;
     @DecimalMin(value = "1000", inclusive = true)
     private Double price;
-
-
-    public Item(Long id, String name, Brand brandForm, int yearOfCreation, Double price) {
-        this.id = id;
-        this.name = name;
-        this.brandForm = brandForm;
-        this.yearOfCreation = yearOfCreation;
-        this.price = price;
-    }
 
     public enum Brand{
         DIOR("Dior"), 
@@ -49,14 +49,4 @@ public class Item {
             return brand;
         }
     }
-
-    // if (price > 1000 || yearOfCreation > 2021 ){
-
-    //     if (!Arrays.asList(Brand.values()).contains(brandForm)){
-    
-    //         throw new IllegalArgumentException("Brand Must On the List Since it is over 1000 Dollars or newer than 2021");
-    
-    //     }
-        
-    // }
 }

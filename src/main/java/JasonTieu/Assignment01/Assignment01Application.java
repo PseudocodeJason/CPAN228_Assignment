@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 import JasonTieu.Assignment01.model.Item;
 import JasonTieu.Assignment01.model.Item.Brand;
-import JasonTieu.Assignment01.repository.ItemRepositroy;
+import JasonTieu.Assignment01.repository.ItemRepository;
 
 @SpringBootApplication
 public class Assignment01Application {
@@ -17,7 +17,7 @@ public class Assignment01Application {
 	}
 
 	@Bean
-	public CommandLineRunner dataLoader(ItemRepositroy repositroy){
+	public CommandLineRunner dataLoader(ItemRepository repositroy){
 		return args ->{
 			repositroy.save(Item.builder()
 			.name("Bag")
