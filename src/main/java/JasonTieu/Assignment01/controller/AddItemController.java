@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import JasonTieu.Assignment01.model.Item;
 import JasonTieu.Assignment01.model.Item.Brand;
-import JasonTieu.Assignment01.repository.impl.JdbcItemRepository;
+import JasonTieu.Assignment01.repository.ItemRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,8 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/Additem")
 public class AddItemController {
     @Autowired
-    private JdbcItemRepository itemRepository;
-
+    private ItemRepository itemRepository;
+    
     @GetMapping
     public String addItem(){
         return "addItemPage";
@@ -51,6 +51,6 @@ public class AddItemController {
         }
         log.info("Procedssing item: {}", item);
         itemRepository.save(item);
-        return "redirect:/";
+        return "redirect:/Itemlist";
     }
 }
